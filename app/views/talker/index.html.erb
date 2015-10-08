@@ -27,7 +27,13 @@
     <% end %>
   </section>
   <%= form_for @talk, url: {action: "ask"}, html: {class: "chat-form", method: "post"} do |f| %>
-    <input type="text" placeholder="입력..." name="ask">
+    <input id="ask" type="text" placeholder="입력..." name="ask">
     <input type="submit" value="전송">
   <% end %>
 </div>
+
+<script>
+$(document).ready(function(){
+  $('#ask').focus();
+});
+</script>
