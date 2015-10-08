@@ -1,1 +1,33 @@
-<h1>talker index 페이지입니다.</h1>
+<div class="main-page">
+  <a href="/learn">
+    <button class="learn-button">가르치러 가기</button>
+  </a>
+  <section class="chat">
+    <% @history.each do |item|%>
+      <div class="right">
+	<div class="profile">
+	  <div class="icon"></div>
+	  <div class="name">User</div>
+	</div>
+	<div class="balloon">
+	  <div class="tail"></div>
+	  <div class="text"><%= item.receive%></div>
+	</div>
+      </div>
+      <div class="left">
+	<div class="profile">
+	  <div class="icon"></div>
+	  <div class="name">Bot</div>
+	</div>
+	<div class="balloon">
+	  <div class="tail"></div>
+	  <div class="text"><%= item.resp %></div>
+	</div>
+      </div>
+    <% end %>
+  </section>
+  <%= form_for @talk, url: {action: "ask"}, html: {class: "chat-form", method: "post"} do |f| %>
+    <input type="text" placeholder="입력..." name="ask">
+    <input type="submit" value="전송">
+  <% end %>
+</div>
